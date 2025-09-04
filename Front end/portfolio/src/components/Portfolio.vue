@@ -73,8 +73,8 @@
             <b>Contact us</b>
             <sep>
             <a class="fa-solid fa-phone" href="tel:+917418323622"></a>
-            <a class="fa-regular fa-envelope" href="mailto:perunkarunai@gmail.com"></a>
-            <a class="fa-brands fa-github" href="https://github.com/JaiSanjay74"></a>
+            <a class="fa-regular fa-envelope" :href="'mailto:' + email"></a>
+            <a class="fa-brands fa-github" :href="githubLink"></a>
             <a class="fa-solid fa-globe" href="#"></a>
             </sep>
         </section>
@@ -90,6 +90,8 @@
    import { ref,nextTick,provide,onMounted} from 'vue';
    
    let resume = ref("")
+   let githubLink = ref("")
+   let email = ref("")
 
    let state = ref("none")
    let triggerOrder = async ()=>{
@@ -114,8 +116,10 @@
     fetch("https://sample-3961a-default-rtdb.firebaseio.com/Portfolio.json").then((v)=>{
     v.json().then((v)=>{
         resume.value = v.ResumeURL
-    })
-  })
+        githubLink.value = v.GITHUB
+        email.value = v.EMAIL
+    })})
+
    })
 </script>
 
