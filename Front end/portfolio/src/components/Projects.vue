@@ -21,7 +21,7 @@
             form link like google form link and form visitor can fill the form and submit that form. And form provider
             can view submitted data through admin portal.
         </p>
-        <a href="https://github.com/JaiSanjay74/Formnest">View Live Application</a>
+        <a :href="Project_GIT_Links !== null ? Project_GIT_Links.FORM_NEST:''">View Live Application</a>
     </div>
     <div class="p">
         <img src="../res/galaxy.png">
@@ -51,7 +51,7 @@
             Here we used Bcrypt for storing hashed password which is given by user.So passwords are securely hashed and stored on mongodb
             securely.
         </p>
-        <a href="https://github.com/JaiSanjay74/Galaxy">View Live Application</a>
+        <a :href="Project_GIT_Links !== null ? Project_GIT_Links.GALAXY:''">View Live Application</a>
     </div>
     <div class="p">
         <img src="../res/arulfoods.png">
@@ -76,7 +76,7 @@
             admin settings panel. here not admin panel fully built only order notification was built using push notification with service worker
             for background tasks even browser closed. 
         </p>
-        <a href="https://github.com/JaiSanjay74/ArulFoods">View Live Application</a>
+        <a :href="Project_GIT_Links !== null ? Project_GIT_Links.ARUL_FOODS:''">View Live Application</a>
     </div>
     <div class="p">
         <img src="../res/wavechat.png">
@@ -116,6 +116,7 @@
             Student features(attend quizz, randam quizz generation, view scores later, signin,signout, signup, forgetpassword
              system via email).  
         </p>
+        <a :href="Project_GIT_Links !== null ? Project_GIT_Links.ISYSWAY_QUIZZ_APP:''">View Live Application</a>
     </div>
     <div class="p">
         <img src="../res/java_notepad.png">
@@ -133,8 +134,26 @@
             with java 8. now you see full featured notepad. Why I used java 8 means I built this app in school 11th std
             started after 1 month I built this application at that time java 8 is standard release.   
         </p>
+        <a :href="Project_GIT_Links !== null ? Project_GIT_Links.NOTE_PAD:''">View Live Application</a>
     </div>
  </div>
 </template>
 <style src="../css/Projects.css" scoped>
 </style>
+
+<script setup>
+ import { onMounted, ref } from 'vue';
+
+ const Project_GIT_Links = ref(null)
+ 
+ onMounted(async()=>{
+   try{
+     let links = await(await fetch("https://sample-3961a-default-rtdb.firebaseio.com/Portfolio/Projects.json")).json()
+
+     Project_GIT_Links.value = links 
+   }
+   catch{
+     alert("Project links fetch process is FAILED !")
+   }
+ })
+</script>
