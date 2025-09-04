@@ -1,0 +1,45 @@
+@import url('../res/Roboto.css');
+
+.trkv{
+   display: flex;
+   flex-direction: column;
+   width: 60%;
+}
+.trkv button{
+   align-self: flex-end;
+   border: none;
+   margin-top: 15px;
+   font-size: 1rem;
+   text-align: left;
+   color: white;
+   background-color: rgba(0, 55, 255, 0.985);
+   font-family: rob-bld;
+   border-radius: 10px;
+   padding: 10px;
+   cursor: pointer;
+}
+.trkv button:hover{
+   background-color: rgb(0, 169, 84);
+}
+.trkv .trk {
+   display: flex;
+   flex-direction: column;
+   border-radius: 7px;
+   padding: 10px;
+   margin-top: 15px;
+   cursor: pointer;
+}
+.trkv .trk b,.trkv .trk p{
+    font-family: rob-bld;
+    color: rgb(225, 225, 225);
+    font-size: 1rem;
+}
+.trkv .trk p{
+   font-family: rob-lt;
+   font-weight: unset;
+   font-size: 1rem;
+   color: white;
+}
+.trkv .trk:hover{
+   background-color: rgba(255, 255, 255, 0.088);
+}

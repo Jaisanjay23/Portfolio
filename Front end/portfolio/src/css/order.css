@@ -1,0 +1,124 @@
+@import url('../res//Roboto.css');
+
+.order{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.order .hold{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+.order .hold b{
+    margin-top: 30px;
+    font-family: rob-md;
+    font-weight: unset;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.order .hold .needs{
+    display: flex;
+    flex-direction: column;
+}
+.order .hold .needs input{
+    border: 1.8px solid rgba(255, 255, 255, 0.185);
+    background-color: rgba(1, 13, 91, 0.452);
+    border-radius: 9px;
+    box-sizing: border-box;
+    margin-top: 30px;
+    padding: 12px;
+    font-family: rob-md;
+    font-size: 1.05rem;
+    color: white;
+    outline: none;
+}
+.order .hold .needs input::placeholder{
+    color: rgba(212, 212, 212, 0.63);
+}
+.order .hold .needs input:focus{
+    border-color: rgb(0, 223, 93);
+}
+
+.order .hold .needs select,.order .hold .needs textarea{
+    outline: none;
+    border: 1.8px solid rgba(255, 255, 255, 0.185);
+    background-color: rgba(1, 13, 91, 0.452);
+    border-radius: 9px;
+    padding: 12px;
+    color: white;
+    font-family: rob-md;
+    font-size: 1.05rem;
+    margin-top: 30px;
+}
+.order .hold .needs select option{
+    background-color: rgb(2, 37, 125);
+}
+
+.order .hold .needs textarea{
+    height: 300px;
+    resize: none;
+}
+.order .hold .needs textarea::placeholder{
+    color: rgba(212, 212, 212, 0.63);
+}
+.order .hold .needs textarea:focus{
+    border-color: rgb(0, 223, 93);
+}
+
+.order .hold .needs button{
+    border-radius: 9px;
+    padding: 10px;
+    color: white;
+    margin-top: 30px;
+    background-color: rgb(45, 45, 195);
+    font-family: rob-bld;
+    font-size: 1.05rem;
+    border: none;
+    transition: 0.5s background-color;
+    cursor: pointer;
+}
+.order .hold .needs button:hover{
+    background-color: rgb(0, 181, 84);
+}
+
+/* when order placed */
+.ordered{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+.ordered h5{
+    font-family: rob-bld;
+    font-size: 1.7rem;
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.ordered b:nth-of-type(1){
+    font-family: rob-md;
+    font-weight: unset;
+    color: rgb(0, 76, 228);
+    font-size: 1.2rem;
+}
+.ordered b:nth-of-type(2){
+    font-family: rob-md;
+    font-weight: unset;
+    color: rgb(2, 190, 96);
+    font-size: 1.2rem;
+    margin-top: 15px;
+}
+.ordered p{
+    font-family: rob-md;
+    font-weight: unset;
+    color: rgb(0, 116, 240);
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+}

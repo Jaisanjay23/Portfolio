@@ -1,0 +1,52 @@
+@import url('../res/Roboto.css');
+
+.logh{
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background-color:rgb(14, 3, 65);
+}
+.logh .log{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+.logh .log b{
+    font-family: rob-bld;
+    color: white;
+    font-size: 4rem;
+    margin-top: 40px;
+}
+
+.logh .log input{
+    font-family: rob-bld;
+    color: rgb(29, 29, 29);
+    font-size: 1.8rem;
+    margin-top: 40px;
+    border: none;
+    outline: none;
+    padding: 20px;
+    border-radius: 15px;
+}
+.logh .log input::placeholder{
+    color: rgba(71, 71, 71, 0.532);
+}
+
+.logh .log button{
+    font-family: rob-bld;
+    color: rgb(255, 255, 255);
+    font-size: 1.8rem;
+    margin-top: 40px;
+    border: none;
+    outline: none;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgb(0, 159, 199);
+    width: inherit;
+}
+.logh .log button:hover{
+    background-color: rgb(0, 75, 140);
+}

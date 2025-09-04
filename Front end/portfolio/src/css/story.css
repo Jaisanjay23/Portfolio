@@ -1,0 +1,82 @@
+
+/* education */
+.story{
+    margin-top: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+.story .tit{
+    font-family: rob-bld;
+    color: white;
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+}
+.story div{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-top: 30px;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 0px 8px 15px rgba(25, 25, 136, 0.37);
+    box-sizing: border-box;
+    border: 2px solid aqua;
+    background-color: rgba(25, 25, 136, 0.651);
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+
+.story div h5{
+    margin-top: 15px;
+    text-align: center;
+    font-family: rob-bld;
+    margin-bottom: 0px;
+    color: rgb(236, 236, 236);
+    font-size: 1.5rem;
+}
+.story p{
+    margin-top: 20px;
+    word-spacing: 1px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.87);
+    font-family: rob-lt;
+    font-size: 18px;
+    font-weight: 400;
+}
+@media(max-width:700px){
+    .story div {
+        width: 95%;
+    }
+    .story div p{
+        font-size: 16.17px;
+    }
+}
+
+.story .show{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    text-align: right;
+    background-color: rgba(0, 0, 52, 0.858);
+    left: 0px;
+}
+.story .show span{
+    color: rgb(0, 255, 145);
+    font-family: rob-bld;
+    font-size: 1.11rem;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.story .show span:hover{
+    color: rgb(255, 0, 76);
+}

@@ -1,0 +1,138 @@
+.trackorder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.trackorder .track{
+    display: flex;
+    flex-direction: column;
+    width:  70%;
+}
+
+.trackorder .track h5{
+    font-family: rob-bld;
+    font-size: 1.6rem;
+    color: white;
+    margin-top: 25px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.trackorder .track input {
+        border: 1.8px solid rgba(255, 255, 255, 0.185);
+        background-color: rgba(1, 13, 91, 0.452);
+        border-radius: 9px;
+        box-sizing: border-box;
+        margin-top: 30px;
+        padding: 12px;
+        font-family: rob-md;
+        font-size: 1.05rem;
+        color: white;
+        outline: none;
+}
+.trackorder .track input::placeholder{
+    color: rgba(212, 212, 212, 0.63);
+}
+.trackorder .track input:focus{
+    border-color: rgb(0, 223, 93);
+}
+
+.trackorder .track  button{
+    border-radius: 9px;
+    padding: 10px;
+    color: white;
+    margin-top: 30px;
+    background-color: rgb(45, 45, 195);
+    font-family: rob-bld;
+    font-size: 1.05rem;
+    border: none;
+    transition: 0.5s background-color;
+    cursor: pointer;
+}
+.trackorder .track  button:hover{
+    background-color: rgb(0, 181, 84);
+}
+
+/* for modern state represent UI */
+
+.trackorder .result{
+    margin-top: 20px;
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+}
+.trackorder .result h5{
+    font-family: rob-bld;
+    color: white;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 25px;
+}
+.trackorder .result .ord b i{
+    display: inline-block;
+    padding: 6px;
+    color: white;
+    background-color: rgb(1, 212, 85);
+    border-radius: 50px;
+    margin-right: 7px;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+.trackorder .result .ord b span{
+    font-family: rob-bld;
+    color: rgb(1, 212, 85);
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.trackorder .result .ln{
+    width: 0px;
+    border-left: 2px dashed rgba(255, 255, 255, 0.374); /* rgb(1, 212, 85) */
+    height: 130px;
+    margin-left: 12px;
+}
+.trackorder .result .lmsg{
+    width: 100%;
+    height: fit-content;
+    padding: 23px 0px 23px 20px;
+}
+.trackorder .result .lmsg .pd{
+   
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 6px;
+}
+.trackorder .result .lmsg .pd b{
+    font-family: rob-md;
+    color: rgba(245, 245, 245, 0.837);
+    font-size: 0.9rem;
+    font-weight: unset;
+}
+.trackorder .result .lmsg .pd p{
+    font-family: rob-lt;
+    color: white;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+/* cancel button */
+
+.trackorder .result button{
+    border: none;
+    margin-top: 15px;
+    padding: 7px;
+    color: white;
+    background-color: red;
+    font-family: rob-bld;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    transition: background-color 0.5s;
+    cursor: pointer;
+}
+
+.trackorder .result button:hover{
+    background-color: rgb(0, 151, 53);
+}

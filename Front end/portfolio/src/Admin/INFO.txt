@@ -1,0 +1,1 @@
+This admin pannel was not used in real application instead this we use admin panel which built using reactJS.

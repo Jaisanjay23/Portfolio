@@ -1,0 +1,91 @@
+@import url('../res/Roboto.css');
+
+  .admh{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 62);
+  }
+  .admh .adm{
+    width: 60%;
+    margin-top: 25px;
+    border-radius: 10px;
+    margin: 15px;
+    background-color: transparent;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .admh .adm b{
+    font-family: rob-bld;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    text-align: center;
+  }
+  .admh .adm p{
+    font-family: rob-lt;
+    color: rgb(182, 182, 182);
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+
+  .admh .ordv b{
+    margin-top: 15px;
+    font-size: 1.5rem;
+    text-align: left;
+    color: rgb(0, 145, 248);
+    margin-right: 15px;
+    font-family: rob-bld;
+  }
+  .admh .ordv button{
+    border: none;
+    margin-top: 15px;
+    font-size: 1rem;
+    text-align: left;
+    color: white;
+    background-color: rgba(255, 0, 68, 0.985);
+    font-family: rob-bld;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .admh .ordv button:nth-child(2){
+    background-color: rgb(0, 180, 72);
+  }
+  .admh .ordv button:nth-child(3){
+    background-color: rgb(108, 0, 180);
+  }
+  .admh .ordv button:hover{
+    background-color: rgb(0, 4, 234);
+  }
+
+
+  /* order details */
+  .admh .details{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 60%;
+  }
+  .admh .details .dt{
+    margin-top: 5px;
+    margin-left: 14px;
+  }
+  .admh .details .dt b{
+    display: block;
+    margin-top: 10px;
+  }
+  .admh .details .dt b:nth-child(1){
+    font-family: rob-md;
+    color: white;
+    font-size: 1.1rem;
+  }
+  
+  .admh .details .dt b:nth-child(2){
+    font-family: rob-lt;
+    color: rgb(235, 235, 235);
+    font-size: 1rem;
+  }
+  

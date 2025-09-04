@@ -1,0 +1,83 @@
+@import url('../res/Roboto.css');
+
+.projects{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.projects h5{
+    font-family: rob-bld;
+    font-size: 1.6rem;
+    color: white;
+    margin: 0px;
+}
+.projects .p{
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-image: linear-gradient(to bottom right,rgba(26, 26, 137, 0.267),rgba(0, 81, 128, 0.426));
+}
+.projects .p img{
+    width: 100%;
+    height: 300px;
+    border-radius: 7px;
+}
+.projects .p .tools b{
+    display: inline-block;
+    padding: 3px;
+    color: white;
+    background-color: rgb(4, 178, 59);
+    border-radius: 4px;
+    font-family: rob-lt;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    margin-right: 7px;
+    letter-spacing: 1px;
+}
+.projects .p .tools + b{
+    font-family: rob-bld;
+    color: white;
+    font-size: 1.7rem; 
+    margin-top: 15px;
+}
+.projects .p p{
+    font-family: rob-md;
+    color: rgb(182, 182, 182);
+    font-size: 1rem;
+    letter-spacing: 0.9px;
+    word-spacing: 1px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    height: 40px;
+    overflow: hidden;
+}
+.projects .p:hover > p{
+    height: fit-content;
+    overflow: visible;
+}
+.projects .p p + a{
+    font-family: rob-bld;
+    color: white;
+    background-color: rgb(255, 0, 68);
+    font-size: 1.1rem;
+    padding: 9px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.6s background-color;
+}
+.projects .p p + a:hover {
+    background-color: rgb(45, 104, 221);
+}
+
+@media(max-width:746px){
+    .projects .p{
+        width: 80%;
+    }
+}

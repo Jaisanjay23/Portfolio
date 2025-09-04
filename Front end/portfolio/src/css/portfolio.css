@@ -1,0 +1,202 @@
+@import url('../res//Roboto.css');
+
+.portfolio{
+    background-color: rgb(10, 10, 58);
+    box-sizing: border-box;
+    height:fit-content
+}
+
+/* for about part */
+.about{
+    margin-top: 100px;
+    display: flex;
+    height: calc(100vh - 100px);
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 30px 0px 30px;
+}
+
+.about section{
+    width: 40%;
+}
+.about section h2{
+    font-family: rob-bld;
+    color: white;
+    margin: 0px 0px 15px 0px;
+    font-size: 4rem;
+}
+.about section b{
+    font-family: rob-bld;
+    font-size: 1.70rem;
+    color: white;
+}
+.about section b .role{
+    display: inline-block;
+    vertical-align:text-bottom;
+    white-space: nowrap;
+    color: rgb(1, 231, 93);
+    width: 389px;
+    overflow: hidden;
+    margin-left: 5px;
+    animation-name: nameexpander;
+    animation-duration: 3s;
+}
+.about section b .role span:nth-of-type(1){
+    color: rgb(82, 255, 1);
+}
+.about section b .role span:nth-of-type(2){
+    color: rgb(4, 165, 202);
+}
+/* small animation */
+@keyframes nameexpander {
+    from{
+        width:0px;
+    }
+    to{
+        width: 389px;
+    }
+}
+.about section p{
+    font-family: rob-lt;
+    font-size: 1.30rem;
+    color: aliceblue;
+}
+.about section a{
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    border: none;
+    background-color: rgb(0, 165, 97);
+    font-size: 1rem;
+    font-family: rob-md;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.7s background-color;
+}
+.about section a:hover{
+    background-image: none;
+    background-color: rgb(0, 188, 188);
+}
+.about img{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 2px;
+    border-style: dashed;
+    padding: 10px;
+    border-color: aqua;
+}
+
+/* responsive for about part */
+@media(max-width:1028px){
+    .about{
+        flex-direction: column-reverse;
+        align-items: center;
+        height:fit-content;
+    }
+    .about section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column
+    };
+    .about p,.about section{
+        width: 100%;
+    }
+    .about section h2{
+        font-size: 3rem;
+    }
+    .about section  p,.about section b,.about section h2{
+        justify-content: center;
+        text-align: center;
+        margin-top: 40px;
+    }
+    .about section a{
+        width: auto;
+        text-align: center;
+    }
+    .about button{
+        margin-top: 40px;
+    }
+
+    .about img{
+        height: 200px;
+        width: 200px;
+    }
+}
+@media(max-width:700px){
+    .about section h2{
+        font-size: 2rem;
+    }
+    .about section p{
+        font-size: 1rem;
+    }
+    .about section b, .about section p, .about section h2{
+        margin-top: 30px;
+    }
+}
+
+/* footer part */
+
+.portfolio footer{
+    margin-top: 120px;
+    background-color: rgba(26, 26, 26, 0.484);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.portfolio footer div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.portfolio footer div img{
+    margin-right: 15px;
+    height: 100px;
+    width: 100px;
+}
+.portfolio footer div b{
+    font-family: rob-bld;
+    color: white;
+    font-size: 1.5rem;
+}
+.portfolio footer section{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.portfolio footer section b{
+    font-family: rob-bld;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.portfolio footer section a{
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.568);
+    margin-right: 20px;
+    text-decoration: none;
+    transition: 0.8s color;
+    cursor: pointer;
+}
+.portfolio footer section a:nth-of-type(4){
+    margin-right: 0px;
+}
+.portfolio footer section a:hover{
+    color: rgb(242, 255, 0);
+}
+.portfolio footer h5{
+
+    font-family: rob-md;
+    font-weight: unset;
+    color: rgba(221, 216, 216, 0.538);
+    font-size: 1.1rem;
+    margin-top: 60px;
+    margin-bottom: 15px;
+    text-align: center;
+}

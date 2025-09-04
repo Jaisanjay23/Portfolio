@@ -1,0 +1,104 @@
+@import url('../res//Roboto.css');
+
+.nav{
+    display: flex;
+    position: fixed;
+    top:0px;
+    width: 100%;
+    background-color: rgb(10, 10, 58);
+    height:100px;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav i{
+    color: white;
+    font-size: 1.70rem;
+    display: none;
+    margin-right: 15px;
+}
+.nav img{
+    height: 90px;
+    width: 90px;
+    margin-left: 15px;
+}
+.nav .topics{
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+.nav .topics a{
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    font-family: rob-lt;
+    letter-spacing: 0.70px;
+    margin-left: 25px;
+    cursor: pointer;
+    transition: 0.5s color;
+}
+.nav .topics a:hover{
+    color: rgb(0, 255, 128);
+}
+.nav .topics a:nth-of-type(6){
+    text-decoration: none;
+    padding: 12px;
+    background-color: rgb(0, 145, 217);
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+    transition: 0.5s background-color;
+}
+.nav .topics a:nth-of-type(6):hover{
+    background-color: rgb(71, 0, 250);
+}
+.nav .topics a:nth-of-type(7){
+    text-decoration: none;
+    padding: 12px;
+    background-color: rgb(255, 0, 93);
+    color: rgb(255, 255, 255);
+    border-radius: 40px;
+    transition: 0.5s background-color;
+}
+.nav .topics a:nth-of-type(7):hover{
+    background-color: rgb(0, 208, 97);
+}
+
+@media(max-width:900px){
+    .nav {
+        justify-content: space-between;
+    }
+    .nav .topics i{
+        display: block;
+        cursor: pointer;
+    }
+    .nav .topics .fa-xmark{
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+    .nav .topics a{
+        display: none;
+    }
+    /* for triggering from vuejs */
+    .nav .topics .tp{
+        display: block;
+    }
+    .nav .sd{
+        width: 60%;
+        flex-direction: column;
+        padding: 15px;
+        background-color: rgb(10, 10, 58);
+        height: 100vh;
+        box-sizing: border-box;
+        margin-right: 0px;
+        align-self: flex-start;
+        align-items: flex-start;
+    }
+    .nav .topics a{
+        margin: 25px 0px 0px 15px;
+    }
+    .nav .topics a:nth-of-type(6),.nav .topics a:nth-of-type(7){
+        width: fit-content;
+    }
+    .nav .topics a:nth-of-type(7){
+        margin-top: 15px;
+    }
+}

@@ -1,0 +1,44 @@
+@import url('../res//Roboto.css');
+
+#edu{
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    flex-direction: column;
+
+}
+#edu h5{
+    font-family: rob-bld;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 15px;
+    font-size: 1.3rem;
+}
+#edu section{
+    margin-top: 25px;
+    background-image: linear-gradient(to bottom right, rgba(46, 46, 146, 0.326),rgba(7, 7, 73, 0.266));
+    border-radius: 10px;
+    width: 40%;
+    flex-wrap: wrap;
+    padding: 15px;
+    border: 1px solid transparent;
+    display: flex;
+}
+#edu section b{
+    color: white;
+    font-family: rob-bld;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+#edu section  span{
+    color: rgb(202, 202, 202);
+    margin-top: 20px;
+    display: block;
+}
+
+@media(max-width:746px){
+    #edu section{
+        width: 80%;
+    };
+}
