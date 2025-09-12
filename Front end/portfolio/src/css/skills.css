@@ -26,6 +26,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .skills .back,.skills .others{
     padding: 15px;
@@ -35,6 +36,7 @@
     border: 2px solid rgba(204, 204, 204, 0.455);
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 .skills .back{
@@ -54,7 +56,7 @@
     text-align: center;
 }
 
-.skills b{
+.skills .techs b{
     font-family: rob-bld;
     color: white;
     font-size: 0.9rem;
@@ -63,7 +65,7 @@
     display: flex;
     align-items: center;
 }
-.skills b img{
+.skills .techs b img{
     height: 20px;
     width: 20px;
     margin-right: 7px;

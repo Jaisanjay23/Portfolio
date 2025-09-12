@@ -26,6 +26,7 @@
     font-size: 4rem;
 }
 .about section b{
+    display: block;
     font-family: rob-bld;
     font-size: 1.70rem;
     color: white;
@@ -33,12 +34,10 @@
 .about section b .role{
     display: inline-block;
     vertical-align:text-bottom;
-    white-space: nowrap;
+    white-space: wrap;
     color: rgb(1, 231, 93);
-    width: 389px;
-    overflow: hidden;
     margin-left: 5px;
-    animation-name: nameexpander;
+    animation-name: roleintro;
     animation-duration: 3s;
 }
 .about section b .role span:nth-of-type(1){
@@ -48,12 +47,33 @@
     color: rgb(4, 165, 202);
 }
 /* small animation */
-@keyframes nameexpander {
-    from{
-        width:0px;
+@keyframes roleintro {
+    0%{ vertical-align: baseline;
+        padding: 14px;
+        border-style: solid;
+        border-radius: 30px;
+        margin-top: 25px;
+        border-width: 0px;
+        border-color: blue;
+        box-shadow: 0px 0px 2px 3px rgb(0, 255, 60);
     }
-    to{
-        width: 389px;
+    40%{
+        border-width: 0.9px;
+        border-color: rgb(255, 0, 81);
+         box-shadow: 0px 0px 5px 6px rgb(255, 0, 68);
+    }
+    80%{
+        border-width: 2px;
+        border-color: rgb(0, 242, 255);
+        box-shadow: 0px 0px 6px 7px rgb(225, 255, 0);
+    }
+    100%{
+        vertical-align: baseline;
+        border-width: 1px;
+        padding: 12px;
+        border-radius: 10px;
+        border-color: rgba(0, 242, 255, 0.464);
+        box-shadow: 0px 0px 6px 7px rgba(225, 255, 0, 0.529);
     }
 }
 .about section p{

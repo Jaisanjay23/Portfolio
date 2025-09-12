@@ -8,7 +8,8 @@
             <span>I am a <span class="role">ME<span>V</span>N & ME<span>R</span>N Stack Developer</span></span>
         </b>
         <p>
-            I am a MEVN, MERN stack and React native  developer and I have a knowledge of MEVN stack at intermediate level 
+            I am a MEVN, MERN stack and React native  developer and I have a knowledge of MEVN and MERN stack and react native
+             at intermediate level 
             and I like to work on new projects using new technologies. I will give perfect output of project to you.
         </p>
         <a :href="resume">VIEW RESUME</a>
@@ -22,7 +23,7 @@
         <div class="front">
         <b class="tit">Front end</b>
 
-        <section>
+        <section class="techs">
         <b><img src="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png"> HTML5</b>
         <b><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png"> CSS</b>
         <b><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png"> JS</b>
@@ -35,7 +36,7 @@
         <div class="back">
             <b class="tit">Back end</b>
 
-            <section>
+            <section class="techs">
             <b><img src="../res/nodejs.png"> NODE JS</b>
             <b><img src="../res/mongodb.png"> MONGO DB</b>
             <b><img src="../res/expressjs.png"> EXPRESS JS</b>
@@ -45,7 +46,7 @@
         <div class="others">
             <b class="tit">Other tools</b>
 
-            <section>
+            <section class="techs">
             <b><img src="../res/chromedevtools.png"> CHROME DEV TOOLS</b>
             <b><img src="../res/vscode.png"> VS CODE</b>
             <b><img src="../res/git.png"> GIT</b>
