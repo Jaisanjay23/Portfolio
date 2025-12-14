@@ -47,5 +47,5 @@ application.get("/orders",DeveloperAPIV1.Orders)
 application.get("/ordertracks",DeveloperAPIV1.OrderTracks)
 
 // Starting server
-application.listen(7000)
+application.listen(process.env.PORT)
 

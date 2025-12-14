@@ -40,8 +40,9 @@ async function Authorise(rq,rs,nxt){
 async function Login(rq,rs){
     try{
         const tid = await rq.db.collection("Profile").findOne({Key:rq.body.key}) 
-        
+        console.log(tid)
         if(tid != null){
+            
             try{
                 const token = jwt.sign({},process.env.JWT_SECRET_KEY,{expiresIn:"30m"})
                 rs.send({data:token})

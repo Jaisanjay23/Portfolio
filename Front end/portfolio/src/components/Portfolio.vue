@@ -114,7 +114,7 @@
    provide("Message",showmessage)
 
    onMounted(()=>{
-    fetch("https://sample-3961a-default-rtdb.firebaseio.com/Portfolio.json").then((v)=>{
+    fetch("https://portfolio-50bd1-default-rtdb.asia-southeast1.firebasedatabase.app/Portfolio.json").then((v)=>{
     v.json().then((v)=>{
         resume.value = v.ResumeURL
         githubLink.value = v.GITHUB
