@@ -1,6 +1,6 @@
 <template>
    <div class="portfolio">
-   
+
     <div class="about" id="ab">
         <section>
         <h2>Hi, I am Jai sanjay V</h2>
@@ -9,7 +9,7 @@
         </b>
         <p>
             I am a MEVN, MERN stack and React native  developer and I have a knowledge of MEVN and MERN stack and react native
-             at intermediate level 
+             at intermediate level
             and I like to work on new projects using new technologies. I will give perfect output of project to you.
         </p>
         <a :href="resume">VIEW RESUME</a>
@@ -17,27 +17,28 @@
 
         <img src="../res/avatar.jpeg">
     </div>
-    
+
     <div class="skills" id="sk">
        <h4>Skills</h4>
         <div class="front">
         <b class="tit">Front end</b>
 
         <section class="techs">
-        <b><img src="https://www.w3.org/html/logo/badge/html5-badge-h-solo.png"> HTML5</b>
-        <b><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png"> CSS</b>
-        <b><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png"> JS</b>
+        <b><img src="../res/html.png"> HTML5</b>
+        <b><img src="../res/css.png"> CSS</b>
+        <b><img src="../res/js.png"> JS</b>
         <b><img src="../res/vuejs.png"> VUE JS</b>
         <b><img src="../res/reactjs.png"></img>REACT JS & REACT NATIVE (ANDROID)</b>
         </section>
         </div>
-        
+
         <div class="p2">
         <div class="back">
             <b class="tit">Back end</b>
 
             <section class="techs">
             <b><img src="../res/nodejs.png"> NODE JS</b>
+            <b><img src="../res/go.png"></img>Go lang</b>
             <b><img src="../res/mongodb.png"> MONGO DB</b>
             <b><img src="../res/expressjs.png"> EXPRESS JS</b>
             </section>
@@ -64,7 +65,7 @@
 
     <Track v-if="state == 'track'"/>
     <Order v-if="state == 'order'"/>
-    
+
     <footer>
         <div>
             <img src="../res/logo.png">
@@ -83,13 +84,13 @@
     </footer>
 
     <Nav @order="triggerOrder" @track="triggerTrack"/>
-    <Msg :msg="msg" v-if="msg != 'null'"/> 
+    <Msg :msg="msg" v-if="msg != 'null'"/>
     </div>
 </template>
 
 <script setup>
    import { ref,nextTick,provide,onMounted} from 'vue';
-   
+
    let resume = ref("")
    let githubLink = ref("")
    let email = ref("")
@@ -105,7 +106,7 @@
     await nextTick()
     document.getElementById("trk").scrollIntoView()
    }
-   
+
    let msg = ref("null")
    let showmessage = (mssg)=>{
     msg.value = mssg
