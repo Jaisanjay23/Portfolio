@@ -23,18 +23,17 @@ async function Order(rq,rs){
     }
 
     try{
-       let IsAlreadyProjectGoing = (await rq.orders.find().toArray()).length == 0
+        let IsAlreadyProjectGoing = (await rq.orders.find().toArray()).length == 0
        
-       if(IsAlreadyProjectGoing){
-          await rq.orders.insertOne(order_details)
-          await rq.db.createCollection(ID)
-          rs.send({data:ID})
-          EmailManager.sendEmail(ID,"ORDER_ID_TEMPLATE",datum.email,"Order Information")
-          EmailManager.sendEmail(ID,"RECIEVE_ORDER",process.env.ADMIN_EMAIL,"Order Information")
-       }
-       else{
-        rs.send({data:"ALREADY_ORDERED"})
-       }
+        if(!IsAlreadyProjectGoing){
+           rs.send({data:"ALREADY_ORDERED"})
+           return
+        }
+        await rq.orders.insertOne(order_details)
+        await rq.db.createCollection(ID)
+        rs.send({data:ID})
+        EmailManager.sendEmail(ID,"ORDER_ID_TEMPLATE",datum.email,"Order Information")
+        EmailManager.sendEmail(ID,"RECIEVE_ORDER",process.env.ADMIN_EMAIL,"Order Information")
     }
     catch(e){
        rs.send({data:"ERROR"})
@@ -46,14 +45,15 @@ async function CancelOrder(rq,rs){
         let IsDeleted = (await rq.orders.deleteOne({OrderID:rq.body.ord_id})).deletedCount == 1
         let IsTracksDeleted = await rq.db.collection(rq.body.ord_id).drop()
 
-        if(IsDeleted && IsTracksDeleted){
-            rs.send({data:true})
-            EmailManager.sendEmail(rq.body.ord_id,"ORDER_CANCELLED_TEMPLATE",Order.Email,"Order cancelled successfully !")
-            EmailManager.sendEmail(rq.body.ord_id,"CANCEL_ORDER_INFO",process.env.ADMIN_EMAIL,"Order was cancelled !")
-        }
-        else{
+        if(!(IsDeleted && IsTracksDeleted)){
             rs.send({data:false})
+            return
         }
+    
+        rs.send({data:true})
+        EmailManager.sendEmail(rq.body.ord_id,"ORDER_CANCELLED_TEMPLATE",Order.Email,"Order cancelled successfully !")
+        EmailManager.sendEmail(rq.body.ord_id,"CANCEL_ORDER_INFO",process.env.ADMIN_EMAIL,"Order was cancelled !")
+        
 }
 
 async function Track(rq,rs){
@@ -61,19 +61,19 @@ async function Track(rq,rs){
         let tracks = await rq.db.collection(rq.query.ord_id).find({}).toArray()
         let Order = await rq.orders.findOne({OrderID:rq.query.ord_id})
       
-        if(Order != null){
-            let Tracks = {
-                OrderedOn:Order.Date,
-                Accepted:Order.Taken,
-                Tracks:tracks,
-                Delivered:Order.Delivered
-            }
-            
-            rs.send({data:Tracks})
-        }
-        else{
+        if(Order == null){
             rs.send({data:false})
+            return
         }
+
+        let Tracks = {
+            OrderedOn:Order.Date,
+            Accepted:Order.Taken,
+            Tracks:tracks,
+            Delivered:Order.Delivered
+        }
+            
+        rs.send({data:Tracks})
     }
     catch(e){
        

@@ -12,23 +12,21 @@ async function Authorise(rq,rs,nxt){
                 break
             }
         }
-        if(isNeedToAuthourise){
-            try{
-                const JWT = rq.headers.authorization.split(" ")[1]  // Bearer token
-                jwt.verify(JWT,process.env.JWT_SECRET_KEY)
-                nxt()
-            }
-            catch(e){
-                if(e.message === "jwt expired"){
-                    rs.send({data:false}) // EXPIRED
-                }
-                else{
-                    throw new Error("ERROR")
-                }
-            }
-        }
-        else{
+        if(!isNeedToAuthourise){
             nxt()
+            return
+        }
+        try{
+            const JWT = rq.headers.authorization.split(" ")[1]  // Bearer token
+            jwt.verify(JWT,process.env.JWT_SECRET_KEY)
+            nxt()
+        }
+        catch(e){
+            if(e.message === "jwt expired"){
+                rs.send({data:false})
+                return
+            }
+            throw new Error("ERROR")
         }
     }
     catch(e){
@@ -40,23 +38,19 @@ async function Authorise(rq,rs,nxt){
 async function Login(rq,rs){
     try{
         const tid = await rq.db.collection("Profile").findOne({Key:rq.body.key}) 
-        console.log(tid)
-        if(tid != null){
-            
-            try{
-                const token = jwt.sign({},process.env.JWT_SECRET_KEY,{expiresIn:"30m"})
-                rs.send({data:token})
-            }
-            catch(e){
-                throw new Error("ERROR")
-            }
-        }
-        else{
+        if(tid == null){
             rs.send({data:false})
+            return
+        }
+        try{
+            const token = jwt.sign({},process.env.JWT_SECRET_KEY,{expiresIn:"30m"})
+            rs.send({data:token})
+        }
+        catch(e){
+            throw new Error("ERROR")
         }
     }
     catch(e){
-       
         rs.send({data:"ERROR"})
     }
 } 
@@ -70,13 +64,10 @@ async function TakeOrder(rq,rs){
             }
         })).modifiedCount === 1
     
-        if(isUpdated){
-            rs.send({data:true})
-            EmailManager.sendEmail(rq.body.ord_id,"ORDER_TAKEN_TEMPLATE",Order.Email,"Order Information")
-        }
-        else{
-            throw new Error("ERROR")
-        }
+        if(!isUpdated) throw new Error("ERROR")
+
+        rs.send({data:true})
+        EmailManager.sendEmail(rq.body.ord_id,"ORDER_TAKEN_TEMPLATE",Order.Email,"Order Information")    
     }
     catch(e){
         rs.send({data:false})
@@ -88,25 +79,25 @@ async function PostTrack(rq,rs){
         let Order = await rq.orders.findOne({OrderID:rq.body.ord_id})
         let ID = require("cuid")()
     
-        if(Order !== null){
-            let tracks = await rq.db.collection(rq.body.ord_id)
-            let date = moment().format("DD.MM.YYYY")
-            let info = {
-                date:date,
-                message:rq.body.msg,
-                id:ID
-            }
-            
-            try{
-                await tracks.insertOne(info)
-                rs.send({data:true})
-            }
-            catch(e){
-                rs.send({data:false})
-            }
-        }
-        else{
+        if(Order == null){
             rs.send({data:"ORDER_NOT_EXISTS"})
+            return
+        }
+        
+        let tracks = await rq.db.collection(rq.body.ord_id)
+        let date = moment().format("DD.MM.YYYY")
+        let info = {
+            date:date,
+            message:rq.body.msg,
+            id:ID
+        }
+            
+        try{
+            await tracks.insertOne(info)
+            rs.send({data:true})
+        }
+        catch(e){
+            rs.send({data:false})
         }
     }
     catch(e){
@@ -119,22 +110,21 @@ async function Deliver(rq,rs) {
     try{
         let Order = await rq.orders.findOne({OrderID:rq.body.ord_id})
     
-        if(Order !== null){
-            let isUpdated = (await rq.orders.updateOne({OrderID:rq.body.ord_id},{
-                $set:{
-                    Delivered:true,
-                    deliveredOn:moment().format("DD.MM.YYYY")
-                }
-            })).modifiedCount === 1
-    
-            rs.send({data:isUpdated})
-    
-            if(isUpdated){
-                EmailManager.sendEmail(rq.body.ord_id,"ORDER_DELIVERED_TEMPLATE",Order.Email,"Order Information") 
-            }
-        }
-        else{
+        if(Order == null){
             rs.send({data:"ORDER_NOT_EXISTS"})
+            return
+        }
+        let isUpdated = (await rq.orders.updateOne({OrderID:rq.body.ord_id},{
+            $set:{
+                Delivered:true,
+                deliveredOn:moment().format("DD.MM.YYYY")
+            }
+        })).modifiedCount === 1
+    
+        rs.send({data:isUpdated})
+    
+        if(isUpdated){
+            EmailManager.sendEmail(rq.body.ord_id,"ORDER_DELIVERED_TEMPLATE",Order.Email,"Order Information") 
         }
     }
     catch(e){
@@ -146,19 +136,19 @@ async function UpdateTrack(rq,rs) {
     try{
         let Order = await rq.orders.findOne({OrderID:rq.body.ord_id})
     
-        if(Order !== null){
-            let tracks = rq.db.collection(rq.body.ord_id)
-            let isUpdated = (await tracks.updateOne({id:rq.body.tid},{
-                $set:{
-                    message:rq.body.msg
-                }
-            })).modifiedCount === 1
-    
-            rs.send({data:isUpdated})
-        }
-        else{
+        if(Order == null){
             rs.send({data:"ORDER_NOT_EXISTS"})
+            return
         }
+
+        let tracks = rq.db.collection(rq.body.ord_id)
+        let isUpdated = (await tracks.updateOne({id:rq.body.tid},{
+            $set:{
+                    message:rq.body.msg
+        }
+        })).modifiedCount === 1
+    
+        rs.send({data:isUpdated})
     }
     catch(e){
         rs.send({data:false})
@@ -170,15 +160,15 @@ async function CancelOrder(rq,rs){
         let Order = await rq.orders.findOne({OrderID:rq.body.ord_id})
         let isDeleted = (await rq.orders.deleteOne({OrderID:rq.body.ord_id})).deletedCount == 1
     
-        if(isDeleted){
-            let IsTracksDeleted = await rq.db.collection(rq.body.ord_id).drop()
-            rs.send({data:IsTracksDeleted})
-            EmailManager.sendEmail(rq.body.ord_id,"ORDER_CANCELLED_TEMPLATE",Order.Email,"Order Information")
-            EmailManager.sendEmail(rq.body.ord_id,"CANCEL_ORDER_INFO",process.env.ADMIN_EMAIL,"Order Information")
+        if(!isDeleted){
+             rs.send({data:"ORDER_NOT_EXIST"})
+             return
         }
-        else{
-            rs.send({data:"ORDER_NOT_EXIST"})
-        }
+
+        let IsTracksDeleted = await rq.db.collection(rq.body.ord_id).drop()
+        rs.send({data:IsTracksDeleted})
+        EmailManager.sendEmail(rq.body.ord_id,"ORDER_CANCELLED_TEMPLATE",Order.Email,"Order Information")
+        EmailManager.sendEmail(rq.body.ord_id,"CANCEL_ORDER_INFO",process.env.ADMIN_EMAIL,"Order Information")
     }
     catch(e){
         rs.send({data:false})
