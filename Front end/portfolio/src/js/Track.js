@@ -14,10 +14,18 @@ export default{
          let orderid = this.$refs.ordid.value
          
          
-         if(this.$refs.ordid.value != ""){
-            let track = await NodeNexus.TrackOrder(orderid)
-            if(track.data !== false){
-               tracks.value = (track.data.Accepted) ? track.data.Tracks : []
+         if(this.$refs.ordid.value == ""){
+            Showmessage("Please enter Order ID !")
+            return
+         }
+
+         let track = await NodeNexus.TrackOrder(orderid)
+         if(track.data == false){
+            Showmessage("No order found !")
+            return
+         }
+
+             tracks.value = (track.data.Accepted) ? track.data.Tracks : []
    
                ordered.info = (track.data.Accepted || track.data.Delivered) ? {
                   symbol:"fa-solid fa-check",
@@ -40,25 +48,17 @@ export default{
                    barcolor:"rgba(255, 255, 255, 0.374)"
                 }
             }
-            else{
-                Showmessage("No order found !")
-            }
-         } 
-         else{
-            Showmessage("Please enter Order ID !")
-         }
-        }
-        
+            
         let cancelorder = async function(){
             let orderid = sessionStorage.getItem("ordid")
             let cancelled = await NodeNexus.CancelOrder(orderid)
-            if(cancelled.data){
-               Showmessage(orderid + "was cancelled successfully !")
-               location.reload()
-            }
-            else{
+            if(!cancelled.data){
                Showmessage("Something went wrong !")
+               return
             }
+
+            Showmessage(orderid + "was cancelled successfully !")
+            location.reload()
         }
       return {tracks,Track,cancelorder,ordered,delivered}
     }

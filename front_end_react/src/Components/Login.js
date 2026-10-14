@@ -5,23 +5,22 @@ import "../css/login.css"
 import {Login as login} from "../res/NodeNexusAPIv1.js"
 
 async function LogintoAdminPanel(key,Message,Goto){
-    if(key.length != 0){
-      let token = (await login(key)).data
-     
-      if(token === "ERROR"){
-        Message("Authentication error !")
-      }
-      else if(token === false){
-        Message("Incorrect key !")
-      }
-      else {
-        sessionStorage.setItem("admintoken",token)
-        Goto("/admin")
-      }
-    } 
-    else{
+    if(key.length === 0){
       Message("Please enter admin key !")
+      return
     }
+    let token = (await login(key)).data
+     
+    if(token === "ERROR"){
+      Message("Authentication error !")
+      return
+    }
+    else if(token === false){
+      Message("Incorrect key !")
+      return
+    }
+    sessionStorage.setItem("admintoken",token)
+    Goto("/admin")
 }
 export default function Login(params){
     

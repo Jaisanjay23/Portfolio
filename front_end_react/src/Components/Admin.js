@@ -37,30 +37,27 @@ export default function Admin({Message}){
       switch(action){
         case "TAKE":
           let isTaken = (await Nodenexus.TakeOrder(details.OrderID,ADMIN_TOKEN)).data
-          if(isTaken){
-             updatetaken(isTaken)
+          if(!isTaken){
+            Message("Something went wrong !")
+            return
           }
-          else{
-             Message("Something went wrong !")
-          }
+          updatetaken(isTaken)
           break
         case "CANCEL":
           let isCancelled = (await Nodenexus.DCancelOrder(details.OrderID,ADMIN_TOKEN)).data
-          if(isCancelled){
-             window.location.pathname = "/alogin"
+          if(!isCancelled){
+            Message("Something went wrong !")
+            return
           }
-          else{
-             Message("Something went wrong !")
-          }
+          window.location.pathname = "/alogin"
           break
         case "DELIVER":
           let isDelivered = (await Nodenexus.DeliverOrder(details.OrderID,ADMIN_TOKEN)).data
-          if(isDelivered){
-             updatedelivered(true)
+          if(!isDelivered){
+            Message("Something went wrong !")
+            return
           }
-          else{
-             Message("Something went wrong !")
-          }  
+          updatedelivered(true)  
           break
         case "FETCH_TRACKS":
           let rtracks = await Nodenexus.OrderTracks(details.OrderID,ADMIN_TOKEN)

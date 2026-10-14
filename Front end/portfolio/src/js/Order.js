@@ -12,7 +12,6 @@ export default{
        watch(company,(v)=>{
          if(v == "company"){
             inputs.value.splice(0,inputs.value.length)
-            console.log(inputs)
          }
        })
 
@@ -53,24 +52,25 @@ export default{
              }
              
              if(!IsAnyEmptyField){
-                 let result = await NodeNexus.Order(dataset)
-                 if(result.data == "ALREADY_ORDERED"){
-                     Showmessage("Sorry, already other order was going. so please try after 2 week !")
-                 }
-                 else if(result.data == "ERROR"){
-                     Showmessage("Something went wrong !")
-                 }
-                 else{
-                     IsOrderedSuccess.value = result.data
-                 }
+                Showmessage("Please fill all fields !")
+                return
              }
-             else{
-                 Showmessage("Please fill all fields !")
-             }
+
+            let result = await NodeNexus.Order(dataset)
+            if(result.data == "ALREADY_ORDERED"){
+                Showmessage("Sorry, already other order was going. so please try after 2 week !")
+                return
+            }
+            else if(result.data == "ERROR"){
+                Showmessage("Something went wrong !")
+                return
+            }
+            IsOrderedSuccess.value = result.data
         }
         catch(e){
             Showmessage("Something went wrong !")
         }    
+        
         }
     
        return {Order,setinputs,company,IsOrderedSuccess}
